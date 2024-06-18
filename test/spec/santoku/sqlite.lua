@@ -145,3 +145,12 @@ test("should handle with clauses", function ()
   assert(teq({ n = 100 }, getns()))
 
 end)
+
+test("nested transaction", function ()
+  local db = sql(sqlite.open_memory())
+  db.transaction(function ()
+    db.transaction(function ()
+      -- should not cause an error
+    end)
+  end)
+end)
