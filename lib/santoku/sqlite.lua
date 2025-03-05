@@ -163,8 +163,6 @@ local function wrap (...)
     end
   end
 
-  -- TODO: Is this OK as a shared variable? Should each coroutine have its
-  -- own copy?
   local transaction_active = false
 
   return {
